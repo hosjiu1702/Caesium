@@ -1,27 +1,26 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/core/actions/#custom-actions/
+from rasa_sdk import Action
+from rasa_sdk.events import SlotSet
 
 
-# This is a simple example for a custom action which utters "Hello World!"
+class ActionSaveThingToBuy(Action):
+	def name(self):
+		return "action_save_thing_to_buy"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+	def run(self, dispatcher, tracker, domain):
+		msg = "okie, em đã lưu lại rồi đó ạ."
+		dispatcher.utter_message(text=msg)
+
+		return [SlotSet("thing_to_buy", tracker.get_latest_entity_values(entity_type=))]
+
+
+class ActionShowThingToBuy(Action):
+	def name(self):
+		return "action_show_thing_to_buy"
+
+	def run(self, dispatcher, tracker, domain):
+		assert tracker.get_slot("thing_to_buy") # sanity check
+		msg = "List:\n"
+		msg += "\n".join(tracker.get_slot(thing_to_buy))
+		dispatcher.utter_message(text=msg)
+
+		return []

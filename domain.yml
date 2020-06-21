@@ -1,39 +1,41 @@
 intents:
   - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - say_bye
+  - say_thanks
+  - request_buy
+  - thing_to_buy
+  - what_to_buy
+  - what_to_do
+
+entites:
+  - thing_to_buy
+
+slots:
+  - thing_to_buy
 
 actions:
-- utter_greet
-- utter_cheer_up
-- utter_did_that_help
-- utter_happy
-- utter_goodbye
-- utter_iamabot
+  - action_save_thing_to_buy
+  - action_show_thing_to_buy
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+  utter_say_hi_1:
+  - text: "em đây ạ."
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_say_hi_2:
+  - text: "Xesi có mặt ạ."
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_welcome_1:
+  - text: "Anh em với nhau mà anh con bày đặt cảm ơn. :)"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_welcome_2:
+  - text: "dạ, anh lo đi mua hàng đi. :|"
 
-  utter_goodbye:
-  - text: "Bye"
+  utter_say_bye_1:
+  - text: "em tạm biệt anh ạ."
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_say_bye_2:
+  - text: "Xesi tạm biệt anh ạ."        
+
 
 session_config:
   session_expiration_time: 60
